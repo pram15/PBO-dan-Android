@@ -1,6 +1,7 @@
 package com.smkrevit.sqlitedatabase;
 
 import android.content.Context;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,6 +39,7 @@ public class BarangAdapter extends RecyclerView.Adapter<BarangAdapter.ViewHolder
         viewHolder.tvHarga.setText(barangList.get(i).getHarga());
 
         viewHolder.tvMenu.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 PopupMenu popupMenu = new PopupMenu(context, viewHolder.tvMenu);
@@ -50,7 +52,7 @@ public class BarangAdapter extends RecyclerView.Adapter<BarangAdapter.ViewHolder
                         switch (item.getItemId()){
 
                             case R.id.ubah:
-                                Toast.makeText(context, "UBAH", Toast.LENGTH_SHORT).show();
+                                ((MainActivity)context).selectUpdate(barangList.get(i).getIdbarang());
                                 break;
 
                             case R.id.hapus:
